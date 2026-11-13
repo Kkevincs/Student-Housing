@@ -22,6 +22,17 @@ namespace API
             );
             var app = builder.Build();
 
+            // `dotnet API.dll --migrate` applies pending EF Core migrations and exits
+            // (used by the "migrate" service in docker-compose.yml).
+            if (args.Contains("--migrate"))
+            {
+                using var scope = app.Services.CreateScope();
+                var db = scope.ServiceProvider.GetRequiredService<HousingDbContext>();
+                db.Database.Migrate();
+                Console.WriteLine("Database migrations applied.");
+                return;
+            }
+
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {

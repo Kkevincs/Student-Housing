@@ -1,0 +1,62 @@
+services:
+  # MySQL database
+  db:
+    image: mysql:8.4
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    ports:
+      - "127.0.0.1:${DB_PORT:-3307}:3306"   # localhost-only (Visual Studio etc.); never exposed publicly
+    volumes:
+      - db-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 20s
+
+  # One-shot container: applies EF Core migrations, then exits
+  migrate:
+    build:
+      context: ./API
+      dockerfile: Dockerfile
+    image: student-housing-api
+    command: ["--migrate"]
+    environment:
+      DB_CONNECTION: Server=db;Port=3306;Database=${MYSQL_DATABASE};User=root;Password=${MYSQL_ROOT_PASSWORD};
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: "no"
+
+  # ASP.NET Core API
+  api:
+    image: student-housing-api
+    restart: unless-stopped
+    environment:
+      ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT:-Development}
+      DB_CONNECTION: Server=db;Port=3306;Database=${MYSQL_DATABASE};User=root;Password=${MYSQL_ROOT_PASSWORD};
+    ports:
+      - "${API_PORT:-8080}:8080"
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+
+  # Web UI for the database (like phpMyAdmin locally)
+  phpmyadmin:
+    image: phpmyadmin:5.2
+    restart: unless-stopped
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      UPLOAD_LIMIT: 64M
+    ports:
+      - "${PMA_PORT:-8082}:80"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  db-data:
