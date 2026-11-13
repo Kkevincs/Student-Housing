@@ -1,12 +1,13 @@
-﻿using System.Globalization;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Globalization;
 
 namespace API.Models
 {
     public class Student
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public Student StudentNav { get; set; }
-        public int StudentId { get; set; }
+
         public string FirstName { get; set; }
         public string LastName { get; set; } 
         public DateTime DateOfBirth { get; set; }
@@ -16,6 +17,10 @@ namespace API.Models
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public string PasswordHash { get; set; }
+        public ICollection<Assignment> Assignments { get; set; }
+        public Room RoomNav { get; set; }
+
+        public Score ScoreNav { get; set; }
 
     }
 }

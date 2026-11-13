@@ -12,5 +12,7 @@ namespace API.Models
         public int SquareMeter { get; set; }
         public int Roomnumber { get; set; }
         public bool Available { get; set; }
+        public Student StudentNav { get; set; }
+        public int StudentId { get; set; }
     }
 }

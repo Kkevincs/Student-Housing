@@ -1,4 +1,7 @@
 
+using Microsoft.EntityFrameworkCore;
+using Microsoft.JSInterop.Infrastructure;
+
 namespace API
 {
     public class Program
@@ -8,11 +11,15 @@ namespace API
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-
+            DotNetEnv.Env.Load();
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
-
+            var ConnectionString = Environment.GetEnvironmentVariable("DB_CONNECTION");
+            builder.Services.AddDbContext<HousingDbContext>(options =>
+            options.UseMySql(
+                ConnectionString, ServerVersion.AutoDetect(ConnectionString))
+            );
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
