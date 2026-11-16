@@ -22,7 +22,7 @@ namespace API.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
-            modelBuilder.Entity("API.Models.Assignment", b =>
+            modelBuilder.Entity("API.Repository.Models.Assignment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -48,7 +48,7 @@ namespace API.Migrations
                     b.ToTable("Assignments");
                 });
 
-            modelBuilder.Entity("API.Models.Chore", b =>
+            modelBuilder.Entity("API.Repository.Models.Chore", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -75,7 +75,7 @@ namespace API.Migrations
                     b.ToTable("Chores");
                 });
 
-            modelBuilder.Entity("API.Models.House", b =>
+            modelBuilder.Entity("API.Repository.Models.House", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -97,7 +97,7 @@ namespace API.Migrations
                     b.ToTable("Houses");
                 });
 
-            modelBuilder.Entity("API.Models.Location", b =>
+            modelBuilder.Entity("API.Repository.Models.Location", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -128,7 +128,7 @@ namespace API.Migrations
                     b.ToTable("Locations");
                 });
 
-            modelBuilder.Entity("API.Models.Room", b =>
+            modelBuilder.Entity("API.Repository.Models.Room", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -151,7 +151,7 @@ namespace API.Migrations
                     b.Property<int>("SquareMeter")
                         .HasColumnType("int");
 
-                    b.Property<int>("StudentId")
+                    b.Property<int?>("StudentId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -164,7 +164,7 @@ namespace API.Migrations
                     b.ToTable("Rooms");
                 });
 
-            modelBuilder.Entity("API.Models.Score", b =>
+            modelBuilder.Entity("API.Repository.Models.Score", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -186,7 +186,7 @@ namespace API.Migrations
                     b.ToTable("Scores");
                 });
 
-            modelBuilder.Entity("API.Models.Student", b =>
+            modelBuilder.Entity("API.Repository.Models.Student", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -232,15 +232,15 @@ namespace API.Migrations
                     b.ToTable("Students");
                 });
 
-            modelBuilder.Entity("API.Models.Assignment", b =>
+            modelBuilder.Entity("API.Repository.Models.Assignment", b =>
                 {
-                    b.HasOne("API.Models.Chore", "ChoreNav")
+                    b.HasOne("API.Repository.Models.Chore", "ChoreNav")
                         .WithMany("Assignments")
                         .HasForeignKey("ChoreId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("API.Models.Student", "StudentNav")
+                    b.HasOne("API.Repository.Models.Student", "StudentNav")
                         .WithMany("Assignments")
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -251,64 +251,62 @@ namespace API.Migrations
                     b.Navigation("StudentNav");
                 });
 
-            modelBuilder.Entity("API.Models.House", b =>
+            modelBuilder.Entity("API.Repository.Models.House", b =>
                 {
-                    b.HasOne("API.Models.Location", "LocationNav")
+                    b.HasOne("API.Repository.Models.Location", "LocationNav")
                         .WithOne("HouseNav")
-                        .HasForeignKey("API.Models.House", "LocationId")
+                        .HasForeignKey("API.Repository.Models.House", "LocationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("LocationNav");
                 });
 
-            modelBuilder.Entity("API.Models.Room", b =>
+            modelBuilder.Entity("API.Repository.Models.Room", b =>
                 {
-                    b.HasOne("API.Models.House", "HouseNav")
+                    b.HasOne("API.Repository.Models.House", "HouseNav")
                         .WithMany("RoomsNav")
                         .HasForeignKey("HouseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("API.Models.Student", "StudentNav")
+                    b.HasOne("API.Repository.Models.Student", "StudentNav")
                         .WithOne("RoomNav")
-                        .HasForeignKey("API.Models.Room", "StudentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("API.Repository.Models.Room", "StudentId");
 
                     b.Navigation("HouseNav");
 
                     b.Navigation("StudentNav");
                 });
 
-            modelBuilder.Entity("API.Models.Score", b =>
+            modelBuilder.Entity("API.Repository.Models.Score", b =>
                 {
-                    b.HasOne("API.Models.Student", "StudentNav")
+                    b.HasOne("API.Repository.Models.Student", "StudentNav")
                         .WithOne("ScoreNav")
-                        .HasForeignKey("API.Models.Score", "StudentId")
+                        .HasForeignKey("API.Repository.Models.Score", "StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("StudentNav");
                 });
 
-            modelBuilder.Entity("API.Models.Chore", b =>
+            modelBuilder.Entity("API.Repository.Models.Chore", b =>
                 {
                     b.Navigation("Assignments");
                 });
 
-            modelBuilder.Entity("API.Models.House", b =>
+            modelBuilder.Entity("API.Repository.Models.House", b =>
                 {
                     b.Navigation("RoomsNav");
                 });
 
-            modelBuilder.Entity("API.Models.Location", b =>
+            modelBuilder.Entity("API.Repository.Models.Location", b =>
                 {
                     b.Navigation("HouseNav")
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("API.Models.Student", b =>
+            modelBuilder.Entity("API.Repository.Models.Student", b =>
                 {
                     b.Navigation("Assignments");
 

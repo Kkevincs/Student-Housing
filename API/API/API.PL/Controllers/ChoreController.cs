@@ -3,8 +3,10 @@ using API.API.BLL.Services;
 using API.Repository.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace API.Controllers
+namespace API.API.PL.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class ChoreController : Controller
     {
         private readonly ChoreService _service;

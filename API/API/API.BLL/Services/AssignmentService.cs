@@ -9,10 +9,11 @@ namespace API.API.BLL.Services
     public class AssignmentService : IAssigmentService
     {
         private readonly AssignmentRepository _repo;
-        private readonly Mapper _mapper;
+        private readonly IMapper _mapper;
 
-        public AssignmentService(AssignmentRepository repo)
+        public AssignmentService(IMapper mapper, AssignmentRepository repo)
         {
+            _mapper = mapper;
             _repo = repo;
         }
 

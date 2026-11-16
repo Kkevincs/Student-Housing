@@ -10,9 +10,9 @@ namespace API.API.BLL.Services
     public class ChoreService : IChoreService
     {
         private readonly ChoreRepository _repo;
-        private readonly Mapper _mapper;
+        private readonly IMapper _mapper;
 
-        public ChoreService(ChoreRepository repo, Mapper mapper)
+        public ChoreService(ChoreRepository repo, IMapper mapper)
         {
             _repo = repo;
             _mapper = mapper;

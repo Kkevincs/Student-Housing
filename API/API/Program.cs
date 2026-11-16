@@ -1,5 +1,7 @@
 
 using API.API.BLL;
+using API.API.BLL.Services;
+using API.API.DAL.Repositories;
 using API.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.JSInterop.Infrastructure;
@@ -15,6 +17,10 @@ namespace API
             // Add services to the container.
             DotNetEnv.Env.Load();
             builder.Services.AddControllers();
+            builder.Services.AddScoped<AssignmentService>();
+            builder.Services.AddScoped<AssignmentRepository>();
+            builder.Services.AddScoped<ChoreService>();
+            builder.Services.AddScoped<ChoreRepository>();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
             var ConnectionString = Environment.GetEnvironmentVariable("DB_CONNECTION");
@@ -40,6 +46,10 @@ namespace API
             if (app.Environment.IsDevelopment())
             {
                 app.MapOpenApi();
+                app.UseSwaggerUI(options =>
+                {
+                    options.SwaggerEndpoint("/openapi/v1.json", "API v1");
+                });
             }
 
             app.UseHttpsRedirection();
