@@ -1,6 +1,6 @@
 ﻿using API.API.BLL.DTOs;
 using API.Repository.Models;
-using AutoMapper
+using AutoMapper;
 
 
 namespace API.API.BLL
