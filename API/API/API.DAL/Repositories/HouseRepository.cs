@@ -20,9 +20,10 @@ namespace API.API.DAL.Repositories
             await _housingDbContext.SaveChangesAsync();
         }
 
-        public async Task Delete(House house)
+        public async Task Delete(int id)
         {
-            _housingDbContext.Houses.Remove(house);
+            House deletable = await _housingDbContext.Houses.FindAsync(id);
+            _housingDbContext.Houses.Remove(deletable);
             await _housingDbContext.SaveChangesAsync();
         }
 
@@ -36,9 +37,10 @@ namespace API.API.DAL.Repositories
             return await _housingDbContext.Houses.FindAsync(id);
         }
 
-        public async Task Update(House house)
+        public async Task Update(int id)
         {
-            _housingDbContext.Houses.Update(house);
+            House updatable = await _housingDbContext.Houses.FindAsync(id);
+            _housingDbContext.Houses.Update(updatable);
             await _housingDbContext.SaveChangesAsync();
         }
     }

@@ -1,4 +1,6 @@
-﻿using API
+﻿using API;
+
+using API.API.BLL.Interfaces;
 using API.Repository;
 using API.Repository.Interfaces;
 using API.Repository.Models;
@@ -21,9 +23,10 @@ namespace API.API.DAL.Repositories
             await _housingDbContext.SaveChangesAsync();
         }
 
-        public async Task Delete(Room room)
+        public async Task Delete(int id)
         {
-            _housingDbContext.Rooms.Remove(room);
+            Room deleteable = await _housingDbContext.Rooms.FindAsync(id);
+            _housingDbContext.Rooms.Remove(deleteable);
             await _housingDbContext.SaveChangesAsync();
         }
 
@@ -37,9 +40,10 @@ namespace API.API.DAL.Repositories
             return await _housingDbContext.Rooms.FindAsync(id);
         }
 
-        public async Task Update(Room room)
+        public async Task Update(int id)
         {
-            _housingDbContext.Rooms.Update(room);
+            Room updateable = await _housingDbContext.Rooms.FindAsync(id);
+            _housingDbContext.Rooms.Update(updateable);
             await _housingDbContext.SaveChangesAsync();
         }
     }

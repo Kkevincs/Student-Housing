@@ -1,4 +1,4 @@
-﻿using API
+﻿using API;
 using API.Repository;
 using API.Repository.Interfaces;
 using API.Repository.Models;
@@ -21,9 +21,10 @@ namespace API.API.DAL.Repositories
             await _housingDbContext.SaveChangesAsync();
         }
 
-        public async Task Delete(Score score)
+        public async Task Delete(int id)
         {
-            _housingDbContext.Scores.Remove(score);
+            Score deleteable = await _housingDbContext.Scores.FindAsync(id);
+            _housingDbContext.Scores.Remove(deleteable);
             await _housingDbContext.SaveChangesAsync();
         }
 
@@ -37,9 +38,10 @@ namespace API.API.DAL.Repositories
             return await _housingDbContext.Scores.FindAsync(id);
         }
 
-        public async Task Update(Score score)
+        public async Task Update(int id)
         {
-            _housingDbContext.Scores.Update(score);
+            Score updateable = await _housingDbContext.Scores.FindAsync(id);
+            _housingDbContext.Scores.Update(updateable);
             await _housingDbContext.SaveChangesAsync();
         }
     }
