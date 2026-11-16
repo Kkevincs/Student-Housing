@@ -4,6 +4,7 @@ using API.API.BLL.Services;
 using API.API.DAL.Repositories;
 using API.Repository;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.JSInterop.Infrastructure;
 
 namespace API
@@ -29,7 +30,16 @@ namespace API
             options.UseMySql(
                 ConnectionString, ServerVersion.AutoDetect(ConnectionString))
             );
+
+            builder.Services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                options.ForwardedHeaders =
+                    ForwardedHeaders.XForwardedFor |
+                    ForwardedHeaders.XForwardedProto;
+
+            });
             var app = builder.Build();
+            app.UseForwardedHeaders();
 
             // `dotnet API.dll --migrate` applies pending EF Core migrations and exits
             // (used by the "migrate" service in docker-compose.yml).
@@ -51,7 +61,6 @@ namespace API
                 });
             
 
-            app.UseHttpsRedirection();
 
             app.UseAuthorization();
 
