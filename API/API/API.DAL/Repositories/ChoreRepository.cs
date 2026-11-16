@@ -21,9 +21,10 @@ namespace API.API.DAL.Repositories
             await _housingDbContext.SaveChangesAsync();
         }
 
-        public async Task Delete(Chore chore)
+        public async Task Delete(int id)
         {
-            _housingDbContext.Remove(chore);
+            Chore deletable = await _housingDbContext.Chores.FindAsync(id);
+            _housingDbContext.Chores.Remove(deletable);
             await _housingDbContext.SaveChangesAsync();
         }
 
@@ -34,12 +35,13 @@ namespace API.API.DAL.Repositories
 
         public async Task<Chore> GetById(int id)
         {
-            return await _housingDbContext.chore.FindAsync(id);
+            return await _housingDbContext.Chores.FindAsync(id);
         }
 
-        public async Task Update(Chore chore)
+        public async Task Update(int id)
         {
-            _housingDbContext.Chores.Update(chore);
+            var updateable = await _housingDbContext.Chores.FindAsync(id);
+            _housingDbContext.Chores.Update(updateable);
             await _housingDbContext.SaveChangesAsync();
         }
     }

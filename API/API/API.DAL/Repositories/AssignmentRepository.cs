@@ -20,13 +20,15 @@ namespace API.API.DAL.Repositories
             await _housingDbContext.SaveChangesAsync();
         }
 
-        public async Task Delete(Assignment assignment)
+        public async Task Delete(int id)
         {
-            _housingDbContext.Assignments.Remove(assignment);
+            Assignment removable = await _housingDbContext.Assignments.FindAsync(id);
+            _housingDbContext.Remove(removable);
             await _housingDbContext.SaveChangesAsync();
         }
-        public async Task Update(Assignment assignment) {
-            _housingDbContext.Assignments.Update(assignment);
+        public async Task Update(int id) {
+            Assignment updateable = await _housingDbContext.Assignments.FindAsync(id);
+            _housingDbContext.Assignments.Update(updateable);
             await _housingDbContext.SaveChangesAsync();
         }
 

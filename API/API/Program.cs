@@ -1,4 +1,5 @@
 
+using API.API.BLL;
 using API.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.JSInterop.Infrastructure;
@@ -17,6 +18,7 @@ namespace API
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
             var ConnectionString = Environment.GetEnvironmentVariable("DB_CONNECTION");
+            builder.Services.AddAutoMapper(cfg => { }, typeof(Mappings));
             builder.Services.AddDbContext<HousingDbContext>(options =>
             options.UseMySql(
                 ConnectionString, ServerVersion.AutoDetect(ConnectionString))

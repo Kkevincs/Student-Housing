@@ -8,8 +8,9 @@ namespace API.Repository.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public int LocationId { get; set; }
-        public Location LocationNav { get; set; }   
+ 
         public int TotalSquareMeter { get; set; }
         public ICollection<Room> RoomsNav { get; set; }
+        public Location LocationNav { get; set; }
     }
 }
