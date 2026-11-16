@@ -3,9 +3,11 @@ using API.API.BLL;
 using API.API.BLL.Services;
 using API.API.DAL.Repositories;
 using API.Repository;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.JSInterop.Infrastructure;
+using Microsoft.OpenApi;
+using Microsoft.OpenApi.Models;
 
 namespace API
 {
@@ -23,7 +25,22 @@ namespace API
             builder.Services.AddScoped<ChoreService>();
             builder.Services.AddScoped<ChoreRepository>();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-            builder.Services.AddOpenApi();
+
+            builder.Services.AddOpenApi(options =>
+            {
+                options.AddDocumentTransformer((document, context, cancellationToken) =>
+                {
+                    document.Servers = new List<OpenApiServer>
+        {
+            new OpenApiServer
+            {
+                Url = "https://api.satoriservices.nl"
+            }
+        };
+
+                    return Task.CompletedTask;
+                });
+            });
             var ConnectionString = Environment.GetEnvironmentVariable("DB_CONNECTION");
             builder.Services.AddAutoMapper(cfg => { }, typeof(Mappings));
             builder.Services.AddDbContext<HousingDbContext>(options =>
