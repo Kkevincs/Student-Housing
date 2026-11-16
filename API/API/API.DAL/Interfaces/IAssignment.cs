@@ -5,7 +5,7 @@ namespace API.Repository.Interfaces
 {
     public interface IAssignment
     {
-        public Task Create(Assignment assignment);
+        public Task Create(int id);
         public Task Delete(Assignment assignment);
         public Task Update(Assignment assignment);
         public Task<List<Assignment>> GetAll();
