@@ -1,0 +1,91 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\arany\\OneDrive\\Desktop\\Universidad\\Proyecto 3\\Student-Housing\\API\\API\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\arany\\OneDrive\\Desktop\\Universidad\\Proyecto 3\\Student-Housing\\API\\API\\API.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:API.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\arany\\OneDrive\\Desktop\\Universidad\\Proyecto 3\\Student-Housing\\API\\API\\API.csproj.user||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:API.csproj.user||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\arany\\OneDrive\\Desktop\\Universidad\\Proyecto 3\\Student-Housing\\API\\API\\API.DAL\\Repositories\\LocationRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:API.DAL\\Repositories\\LocationRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\arany\\OneDrive\\Desktop\\Universidad\\Proyecto 3\\Student-Housing\\API\\API\\API.DAL\\Repositories\\AssignmentRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:API.DAL\\Repositories\\AssignmentRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LocationRepository.cs",
+              "DocumentMoniker": "C:\\Users\\arany\\OneDrive\\Desktop\\Universidad\\Proyecto 3\\Student-Housing\\API\\API\\API.DAL\\Repositories\\LocationRepository.cs",
+              "RelativeDocumentMoniker": "API.DAL\\Repositories\\LocationRepository.cs",
+              "ToolTip": "C:\\Users\\arany\\OneDrive\\Desktop\\Universidad\\Proyecto 3\\Student-Housing\\API\\API\\API.DAL\\Repositories\\LocationRepository.cs",
+              "RelativeToolTip": "API.DAL\\Repositories\\LocationRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T13:14:44.681Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%3"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AssignmentRepository.cs",
+              "DocumentMoniker": "C:\\Users\\arany\\OneDrive\\Desktop\\Universidad\\Proyecto 3\\Student-Housing\\API\\API\\API.DAL\\Repositories\\AssignmentRepository.cs",
+              "RelativeDocumentMoniker": "API.DAL\\Repositories\\AssignmentRepository.cs",
+              "ToolTip": "C:\\Users\\arany\\OneDrive\\Desktop\\Universidad\\Proyecto 3\\Student-Housing\\API\\API\\API.DAL\\Repositories\\AssignmentRepository.cs",
+              "RelativeToolTip": "API.DAL\\Repositories\\AssignmentRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T13:13:08.326Z",
+              "OwnerCaption": "%3"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "API.csproj.user",
+              "DocumentMoniker": "C:\\Users\\arany\\OneDrive\\Desktop\\Universidad\\Proyecto 3\\Student-Housing\\API\\API\\API.csproj.user",
+              "RelativeDocumentMoniker": "API.csproj.user",
+              "ToolTip": "C:\\Users\\arany\\OneDrive\\Desktop\\Universidad\\Proyecto 3\\Student-Housing\\API\\API\\API.csproj.user",
+              "RelativeToolTip": "API.csproj.user",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003464|",
+              "WhenOpened": "2026-11-16T13:12:44.279Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%3"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "API.csproj",
+              "DocumentMoniker": "C:\\Users\\arany\\OneDrive\\Desktop\\Universidad\\Proyecto 3\\Student-Housing\\API\\API\\API.csproj",
+              "RelativeDocumentMoniker": "API.csproj",
+              "ToolTip": "C:\\Users\\arany\\OneDrive\\Desktop\\Universidad\\Proyecto 3\\Student-Housing\\API\\API\\API.csproj",
+              "RelativeToolTip": "API.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-11-16T13:12:34.097Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%3"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
