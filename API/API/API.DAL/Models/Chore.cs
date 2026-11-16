@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace API.Models
+namespace API.Repository.Models
 {
     public class Chore
     {
