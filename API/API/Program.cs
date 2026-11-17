@@ -24,6 +24,16 @@ namespace API
             builder.Services.AddScoped<AssignmentRepository>();
             builder.Services.AddScoped<ChoreService>();
             builder.Services.AddScoped<ChoreRepository>();
+            builder.Services.AddScoped<HouseService>();
+            builder.Services.AddScoped<HouseRepository>();
+            builder.Services.AddScoped<LocationService>();
+            builder.Services.AddScoped<LocationRepository>();
+            builder.Services.AddScoped<RoomService>();
+            builder.Services.AddScoped<RoomRepository>();
+            builder.Services.AddScoped<ScoreService>();
+            builder.Services.AddScoped<ScoreRepository>();
+            builder.Services.AddScoped<StudentService>();
+            builder.Services.AddScoped<StudentRepository>();    
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 
             builder.Services.AddOpenApi(options =>

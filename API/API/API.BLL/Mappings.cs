@@ -21,6 +21,31 @@ namespace API.API.BLL
             CreateMap<Assignment, GetAssigmentDto>();
             //todo
 
+            CreateMap<CreateHouseDto, House>();
+            CreateMap<House, CreateHouseDto>();
+            CreateMap<GetHouseDto, House>();
+            CreateMap<House, GetHouseDto>();
+
+            CreateMap<CreateLocationDto, Location>();
+            CreateMap<Location, CreateLocationDto>();
+            CreateMap<GetLocationDto, Location>();
+            CreateMap<Location,  GetLocationDto>();
+
+            CreateMap<CreateRoomDto, Room>();
+            CreateMap<Room, CreateRoomDto>();
+            CreateMap<GetRoomDto, Room>();
+            CreateMap<Room, GetRoomDto>();
+
+            CreateMap<CreateScoreDto, Score>();
+            CreateMap<Score, CreateScoreDto>();
+            CreateMap<GetScoreDto, Score>();
+            CreateMap<Score, GetScoreDto>();
+
+            CreateMap<CreateStudentDto, Student>();
+            CreateMap<Student, CreateStudentDto>();
+            CreateMap<GetStudentDto, Student>();
+            CreateMap<Student, GetStudentDto>();
+
 
         }
 
