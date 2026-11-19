@@ -24,6 +24,7 @@ namespace API
             builder.Services.AddScoped<AssignmentRepository>();
             builder.Services.AddScoped<ChoreService>();
             builder.Services.AddScoped<ChoreRepository>();
+
             builder.Services.AddScoped<HouseService>();
             builder.Services.AddScoped<HouseRepository>();
             builder.Services.AddScoped<LocationService>();
