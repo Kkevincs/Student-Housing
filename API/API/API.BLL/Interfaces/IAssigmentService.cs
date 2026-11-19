@@ -6,7 +6,7 @@ namespace API.API.BLL.Interfaces
     public interface IAssigmentService
     {
         public Task Create(CreateAssignmentDto assignment);
-        public Task Update(GetAssigmentDto);
+        public Task Update(GetAssigmentDto GetassignmentDto);
         public Task Delete(int id);
         public Task<Assignment> GetById(int id);
         public Task<List<Assignment>> GetAll();
