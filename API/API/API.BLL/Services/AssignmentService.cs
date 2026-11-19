@@ -23,9 +23,9 @@ namespace API.API.BLL.Services
             await _repo.Create(NewAssignment);
         }
 
-        public Task Delete(int id)
+        public async Task Delete(int id)
         {
-            throw new NotImplementedException();
+            await _repo.Delete(id);
         }
 
         public async Task<List<Assignment>> GetAll()
