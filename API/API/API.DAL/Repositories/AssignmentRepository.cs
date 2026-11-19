@@ -26,9 +26,9 @@ namespace API.API.DAL.Repositories
             _housingDbContext.Remove(removable);
             await _housingDbContext.SaveChangesAsync();
         }
-        public async Task Update(int id) {
-            Assignment updateable = await _housingDbContext.Assignments.FindAsync(id);
-            _housingDbContext.Assignments.Update(updateable);
+        public async Task Update(Assignment assignment) {
+        
+            _housingDbContext.Assignments.Update(assignment);
             await _housingDbContext.SaveChangesAsync();
         }
 

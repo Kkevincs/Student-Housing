@@ -6,7 +6,7 @@ namespace API.API.BLL.Interfaces
     public interface IHouseService
     {
         public Task Create(CreateHouseDto house);
-        public Task Update(int id);
+        public Task Update(GetAssigmentDto);
         public Task Delete( int id);
         public Task<House> GetById(int id);
         public Task<List<House>> GetAll();
