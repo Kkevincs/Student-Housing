@@ -33,7 +33,20 @@ namespace API
             builder.Services.AddScoped<ScoreService>();
             builder.Services.AddScoped<ScoreRepository>();
             builder.Services.AddScoped<StudentService>();
-            builder.Services.AddScoped<StudentRepository>();    
+            builder.Services.AddScoped<StudentRepository>();
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("Frontend", policy =>
+                {
+                    policy.WithOrigins(
+                        "http://localhost:5173",
+                        "http://frontend.satoriservices.nl"
+                    )
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                });
+            });
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 
             builder.Services.AddOpenApi(options =>
@@ -67,6 +80,8 @@ namespace API
             });
             var app = builder.Build();
             app.UseForwardedHeaders();
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
 
             // `dotnet API.dll --migrate` applies pending EF Core migrations and exits
             // (used by the "migrate" service in docker-compose.yml).
