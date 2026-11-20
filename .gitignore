@@ -55,5 +55,5 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
-/API/.vs
-/.vs
+# Visual Studio cache (any folder)
+.vs/
