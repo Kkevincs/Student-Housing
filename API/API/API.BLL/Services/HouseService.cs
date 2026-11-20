@@ -39,9 +39,9 @@ namespace API.API.BLL.Services
             return await _repo.GetById(id);
         }
 
-        public async Task Update(GetAssigmentDto getAssigmentDto)
+        public async Task Update(GetHouseDto house)
         {
-            Assignment updateable = _mapper.Map<Assignment>(getAssigmentDto);
+            House updateable = _mapper.Map<House>(house);
             await _repo.Update(updateable);
         }
     }

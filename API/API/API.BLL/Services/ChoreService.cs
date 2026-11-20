@@ -40,9 +40,9 @@ namespace API.API.BLL.Services
            return await _repo.GetById(id);
         }
 
-        public async Task Update(GetAssigmentDto getAssigmentDto)
+        public async Task Update(GetChoreDto chore)
         {
-            Assignment updateable = _mapper.Map<Assignment>(getAssigmentDto);
+            Chore updateable = _mapper.Map<Chore>(chore);
             await _repo.Update(updateable);
         }
     }

@@ -6,7 +6,7 @@ namespace API.Repository.Interfaces
     public interface IChore
     {
         public Task Create(Chore chore);
-        public Task Update(Assignment assignment);
+        public Task Update(Chore chore);
         public Task Delete(int id);
         public Task<List<Chore>> GetAll();
         public Task<Chore> GetById(int id);

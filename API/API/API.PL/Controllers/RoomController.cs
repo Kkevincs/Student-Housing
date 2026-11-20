@@ -35,9 +35,9 @@ namespace API.API.PL.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(GetAssigmentDto getAssigmentDto)
+        public async Task<IActionResult> Update(GetRoomDto room)
         {
-            await _service.Update(getAssigmentDto);
+            await _service.Update(room);
             return Ok();
         }
 

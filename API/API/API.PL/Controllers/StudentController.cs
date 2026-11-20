@@ -35,9 +35,9 @@ namespace API.API.PL.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(GetAssigmentDto getAssigmentDto)
+        public async Task<IActionResult> Update(GetStudentDto student)
         {
-            await _service.Update(getAssigmentDto);
+            await _service.Update(student);
             return Ok();
         }
 
@@ -46,6 +46,12 @@ namespace API.API.PL.Controllers
         {
             await _service.Delete(id);
             return Ok();
+        }
+
+        [HttpPost]
+        public async Task<GetStudentDto> Register(CreateStudentDto student)
+        { 
+            
         }
     }
 }

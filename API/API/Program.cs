@@ -8,6 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.JSInterop.Infrastructure;
 using Microsoft.OpenApi;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace API
 {
@@ -15,10 +18,11 @@ namespace API
     {
         public static void Main(string[] args)
         {
+            DotNetEnv.Env.Load();
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            DotNetEnv.Env.Load();
+
             builder.Services.AddControllers();
             builder.Services.AddScoped<AssignmentService>();
             builder.Services.AddScoped<AssignmentRepository>();
@@ -35,6 +39,8 @@ namespace API
             builder.Services.AddScoped<ScoreRepository>();
             builder.Services.AddScoped<StudentService>();
             builder.Services.AddScoped<StudentRepository>();
+            builder.Services.AddScoped<AuthenticationService>();
+            builder.Services.AddScoped<Client>();
 
             builder.Services.AddCors(options =>
             {
@@ -66,11 +72,32 @@ namespace API
                 });
             });
             var ConnectionString = Environment.GetEnvironmentVariable("DB_CONNECTION");
+            var jwtkey = Environment.GetEnvironmentVariable("JWT_KEY");
             builder.Services.AddAutoMapper(cfg => { }, typeof(Mappings));
+            builder.Services.AddAuthorization();
             builder.Services.AddDbContext<HousingDbContext>(options =>
             options.UseMySql(
                 ConnectionString, ServerVersion.AutoDetect(ConnectionString))
             );
+
+            builder.Services
+                .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+
+                        ValidIssuer = "StudentHousingAPI",
+                        ValidAudience = "StudentHousingFrontend",
+
+                        IssuerSigningKey = new SymmetricSecurityKey(
+                        Encoding.UTF8.GetBytes(jwtkey))
+                    };
+                });
 
             builder.Services.Configure<ForwardedHeadersOptions>(options =>
             {
@@ -102,9 +129,9 @@ namespace API
                 {
                     options.SwaggerEndpoint("/openapi/v1.json", "API v1");
                 });
-            
 
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
 
