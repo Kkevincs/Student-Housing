@@ -8,7 +8,7 @@ namespace API.API.DAL.Interfaces
         public Task Create(Employee employee);
         public Task Update(Employee employee);
         public Task Delete(int id);
-        public Task<List<House>> GetAll();
-        public Task<House> GetById(int id);
+        public Task<List<Employee>> GetAll();
+        public Task<Employee> GetById(int id);
     }   
 }
