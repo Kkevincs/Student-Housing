@@ -38,9 +38,10 @@ namespace API.API.BLL.Services
             return await _repo.GetById(id);
         }
 
-        public async Task Update(int id)
+        public async Task Update(GetStudentDto student)
         {
-            await _repo.Update(id);
+            Student updateable = _mapper.Map<Student>(student);
+            await _repo.Update(updateable);
         }
     }
 }

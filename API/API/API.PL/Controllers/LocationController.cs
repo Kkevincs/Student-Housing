@@ -35,9 +35,9 @@ namespace API.API.PL.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id)
+        public async Task<IActionResult> Update(GetLocationDto location)
         {
-            await _service.Update(id);
+            await _service.Update(location);
             return Ok();
         }
 

@@ -37,10 +37,10 @@ namespace API.API.DAL.Repositories
             return await _housingDbContext.Houses.FindAsync(id);
         }
 
-        public async Task Update(int id)
+        public async Task Update(House house)
         {
-            House updatable = await _housingDbContext.Houses.FindAsync(id);
-            _housingDbContext.Houses.Update(updatable);
+
+            _housingDbContext.Houses.Update(house);
             await _housingDbContext.SaveChangesAsync();
         }
     }

@@ -39,9 +39,10 @@ namespace API.API.BLL.Services
             return await _repo.GetById(id);
         }
 
-        public async Task Update(int id)
+        public async Task Update(GetScoreDto score)
         {
-            await _repo.Update(id);
+            Score updateable = _mapper.Map<Score>(score);
+            await _repo.Update(updateable);
         }
     }
 }
