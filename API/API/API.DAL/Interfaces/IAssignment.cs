@@ -7,7 +7,7 @@ namespace API.Repository.Interfaces
     {
         public Task Create(Assignment assignment);
         public Task Delete(int id);
-        public Task Update(int id);
+        public Task Update(Assignment assignment);
         public Task<List<Assignment>> GetAll();
         public Task<Assignment> GetById(int id);
             

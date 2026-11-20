@@ -23,9 +23,9 @@ namespace API.API.BLL.Services
             await _repo.Create(NewAssignment);
         }
 
-        public Task Delete(int id)
+        public async Task Delete(int id)
         {
-            throw new NotImplementedException();
+            await _repo.Delete(id);
         }
 
         public async Task<List<Assignment>> GetAll()
@@ -38,9 +38,10 @@ namespace API.API.BLL.Services
             return await _repo.GetById(id);
         }
 
-        public Task Update(int id)
+        public async Task Update(GetAssigmentDto getAssigmentDto)
         {
-            throw new NotImplementedException();
+            Assignment updateable = _mapper.Map<Assignment>(getAssigmentDto);
+            await _repo.Update(updateable);
         }
     }
 }
