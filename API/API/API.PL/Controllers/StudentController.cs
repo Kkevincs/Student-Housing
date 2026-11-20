@@ -47,5 +47,11 @@ namespace API.API.PL.Controllers
             await _service.Delete(id);
             return Ok();
         }
+
+        [HttpPost]
+        public async Task<GetStudentDto> Register(CreateStudentDto student)
+        { 
+            
+        }
     }
 }

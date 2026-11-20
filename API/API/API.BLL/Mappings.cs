@@ -19,7 +19,6 @@ namespace API.API.BLL
             CreateMap<Assignment, CreateAssignmentDto>();
             CreateMap<GetAssigmentDto, Assignment>();
             CreateMap<Assignment, GetAssigmentDto>();
-            //todo
 
             CreateMap<CreateHouseDto, House>();
             CreateMap<House, CreateHouseDto>();
