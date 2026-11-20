@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Modify chores | Web_name</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-section="chores">
+    <div id="header"></div>
+
+    <main class="page">
+        <div class="page-head">
+            <div>
+                <h1 class="page-title">Modify chores</h1>
+                <p class="page-subtitle">Pick a chore to edit or delete it.</p>
+            </div>
+            <a class="btn" href="chores.html">Back to calendar</a>
+        </div>
+
+        <div class="table-wrap">
+            <table class="table table--clickable">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">How often</th>
+                        <th scope="col">Created by</th>
+                    </tr>
+                </thead>
+                <!-- Example rows: JS will fill this table (link to edit_chore.html?id=...) -->
+                <tbody id="modify-chore-table">
+                    <tr>
+                        <td><a class="row-link" href="edit_chore.html?id=1">Take out the trash</a></td>
+                        <td>Both bins, put new bags in.</td>
+                        <td>Every week</td>
+                        <td>Anna</td>
+                    </tr>
+                    <tr>
+                        <td><a class="row-link" href="edit_chore.html?id=2">Clean the kitchen</a></td>
+                        <td>Counters, stove and floor.</td>
+                        <td>Every week</td>
+                        <td>Marco</td>
+                    </tr>
+                    <tr>
+                        <td><a class="row-link" href="edit_chore.html?id=3">Clean the bathroom</a></td>
+                        <td>Sink, shower, toilet and floor.</td>
+                        <td>Every 2 weeks</td>
+                        <td>Lena</td>
+                    </tr>
+                    <tr>
+                        <td><a class="row-link" href="edit_chore.html?id=4">Vacuum the hallway</a></td>
+                        <td>Hallway and stairs.</td>
+                        <td>Every 2 weeks</td>
+                        <td>Tom</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="include.js"></script>
+</body>
+</html>

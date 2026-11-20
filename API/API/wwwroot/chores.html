@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chores | Web_name</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-section="chores">
+    <div id="header"></div>
+
+    <main class="page">
+        <!-- Approval banner: JS removes "hidden" when a housemate added a chore that needs approval -->
+        <section class="banner" id="approval-banner" aria-live="polite" hidden>
+            <h2 class="banner__title">Approve new chore</h2>
+            <p class="banner__text" id="approval-banner-text">A housemate added a new chore. Have a look and approve or decline it.</p>
+            <a class="btn btn--sm" href="review_chore.html">Review</a>
+        </section>
+
+        <div class="page-head">
+            <div>
+                <h1 class="page-title">Chores</h1>
+                <p class="page-subtitle">Who does what in the house this month.</p>
+            </div>
+            <div class="actions">
+                <a class="btn" href="modify_chores.html">Modify</a>
+                <a class="btn btn--primary" href="add_chore.html">Add</a>
+            </div>
+        </div>
+
+        <div class="grid-main-side">
+            <!-- Calendar -->
+            <section class="card" aria-labelledby="calendar-title">
+                <h2 class="card__title" id="calendar-title">Calendar</h2>
+                <!-- Example calendar: JS will build the cells -->
+                <div class="calendar" id="calendar">
+                    <div class="calendar__head"></div>
+                    <div class="calendar__head">Mon</div>
+                    <div class="calendar__head">Tue</div>
+                    <div class="calendar__head">Wed</div>
+                    <div class="calendar__head">Thu</div>
+                    <div class="calendar__head">Fri</div>
+                    <div class="calendar__head">Sat</div>
+                    <div class="calendar__head">Sun</div>
+
+                    <div class="calendar__week">Week 1</div>
+                    <div class="calendar__cell"></div>
+                    <div class="calendar__cell"></div>
+                    <div class="calendar__cell"></div>
+                    <div class="calendar__cell"><span class="calendar__event">Trash</span><span class="calendar__event calendar__event--2">Kitchen</span></div>
+                    <div class="calendar__cell"></div>
+                    <div class="calendar__cell"><span class="calendar__event calendar__event--3">Bathroom</span></div>
+                    <div class="calendar__cell"></div>
+
+                    <div class="calendar__week">Week 2</div>
+                    <div class="calendar__cell"></div>
+                    <div class="calendar__cell"></div>
+                    <div class="calendar__cell"></div>
+                    <div class="calendar__cell"><span class="calendar__event">Trash</span><span class="calendar__event calendar__event--2">Kitchen</span></div>
+                    <div class="calendar__cell"></div>
+                    <div class="calendar__cell"></div>
+                    <div class="calendar__cell"><span class="calendar__event calendar__event--4">Hallway</span></div>
+
+                    <div class="calendar__week">Week 3</div>
+                    <div class="calendar__cell"><span class="calendar__event calendar__event--4">Groceries</span></div>
+                    <div class="calendar__cell"></div>
+                    <div class="calendar__cell"></div>
+                    <div class="calendar__cell"><span class="calendar__event">Trash</span><span class="calendar__event calendar__event--2">Kitchen</span></div>
+                    <div class="calendar__cell"></div>
+                    <div class="calendar__cell"><span class="calendar__event calendar__event--3">Bathroom</span></div>
+                    <div class="calendar__cell"></div>
+
+                    <div class="calendar__week">Week 4</div>
+                    <div class="calendar__cell"></div>
+                    <div class="calendar__cell"></div>
+                    <div class="calendar__cell"></div>
+                    <div class="calendar__cell"><span class="calendar__event">Trash</span></div>
+                    <div class="calendar__cell"></div>
+                    <div class="calendar__cell"></div>
+                    <div class="calendar__cell"></div>
+                </div>
+                <div class="legend" id="calendar-legend">
+                    <span><i></i>Anna</span>
+                    <span><i class="c2"></i>Marco</span>
+                    <span><i class="c3"></i>Lena</span>
+                    <span><i class="c4"></i>Tom</span>
+                </div>
+            </section>
+
+            <!-- My to-do list -->
+            <section class="card" aria-labelledby="my-todo-title">
+                <h2 class="card__title" id="my-todo-title">My to-do list</h2>
+                <ul class="list" id="my-todo-list">
+                    <li class="list__item">
+                        <div class="list__main">
+                            <div class="list__title">Take out the trash</div>
+                            <div class="list__meta">Thursday</div>
+                        </div>
+                        <button class="btn btn--sm" type="button">Done</button>
+                    </li>
+                </ul>
+            </section>
+        </div>
+
+        <!-- Chore list -->
+        <h2 class="section-title">Chore list</h2>
+        <div class="table-wrap">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Chore</th>
+                        <th scope="col">How often</th>
+                        <th scope="col">Assigned to</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Approval</th>
+                    </tr>
+                </thead>
+                <!-- Example rows: JS will fill this table -->
+                <tbody id="chore-table">
+                    <tr>
+                        <td>Take out the trash</td>
+                        <td>Every week</td>
+                        <td>Anna</td>
+                        <td><span class="pill pill--done">Done</span></td>
+                        <td><span class="pill pill--done">Approved</span></td>
+                    </tr>
+                    <tr>
+                        <td>Clean the kitchen</td>
+                        <td>Every week</td>
+                        <td>Marco</td>
+                        <td>
+                            <div class="cell-actions">
+                                <span>Was it done?</span>
+                                <span class="btn-pair">
+                                    <button class="btn btn--sm" type="button">Yes</button>
+                                    <button class="btn btn--sm" type="button">No</button>
+                                </span>
+                            </div>
+                        </td>
+                        <td><span class="pill pill--done">Approved</span></td>
+                    </tr>
+                    <tr>
+                        <td>Clean the bathroom</td>
+                        <td>Every 2 weeks</td>
+                        <td>Lena</td>
+                        <td><span class="pill">To do</span></td>
+                        <td>
+                            <div class="cell-actions">
+                                <span class="pill pill--pending">Waiting for approval</span>
+                                <a class="btn btn--sm" href="review_chore.html">Review</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Vacuum the hallway</td>
+                        <td>Every 2 weeks</td>
+                        <td>Tom</td>
+                        <td><span class="pill">To do</span></td>
+                        <td><span class="pill pill--done">Approved</span></td>
+                    </tr>
+                    <tr>
+                        <td>Groceries</td>
+                        <td>Every month</td>
+                        <td>Tom</td>
+                        <td><span class="pill">To do</span></td>
+                        <td>
+                            <div class="cell-actions">
+                                <span class="pill pill--pending">Waiting for approval</span>
+                                <a class="btn btn--sm" href="review_chore.html">Review</a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="include.js"></script>
+</body>
+</html>

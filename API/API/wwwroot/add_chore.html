@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Add chore | Web_name</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-section="chores">
+    <div id="header"></div>
+
+    <main class="page page--form">
+        <section class="card">
+            <p class="breadcrumb"><a href="chores.html">Chores</a> / Add chore</p>
+            <h1 class="form-title">Add chore</h1>
+            <p class="form-intro">Your housemates will be asked to approve the new chore.</p>
+
+            <form id="add-chore-form" action="chore_submitted.html" method="get">
+                <div class="form-row">
+                    <label for="chore-name">Name</label>
+                    <input id="chore-name" name="name" type="text" class="input" required>
+                </div>
+                <div class="form-row">
+                    <label for="chore-frequency">How often</label>
+                    <select id="chore-frequency" name="frequency" class="input" required>
+                        <option value="">Choose…</option>
+                        <option value="daily">Every day</option>
+                        <option value="weekly">Every week</option>
+                        <option value="biweekly">Every 2 weeks</option>
+                        <option value="monthly">Every month</option>
+                    </select>
+                </div>
+                <div class="form-row form-row--top">
+                    <label for="chore-description">Description</label>
+                    <textarea id="chore-description" name="description" class="input"></textarea>
+                </div>
+                <div class="form-row">
+                    <label for="chore-points">Points</label>
+                    <input id="chore-points" name="points" type="number" min="0" class="input" required>
+                </div>
+
+                <hr class="form-divider">
+
+                <!-- Filled in by JS -->
+                <div class="form-row">
+                    <label for="chore-created-by">Created by</label>
+                    <input id="chore-created-by" type="text" class="input" readonly>
+                </div>
+                <div class="form-row">
+                    <label for="chore-created-date">Creation date</label>
+                    <input id="chore-created-date" type="text" class="input" readonly>
+                </div>
+
+                <div class="actions actions--end">
+                    <a class="btn" href="chores.html">Cancel</a>
+                    <button class="btn btn--primary" type="submit">Submit</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script src="include.js"></script>
+</body>
+</html>
