@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Smart devices | Web_name</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-section="smart_devices">
+    <div id="header"></div>
+
+    <main class="page">
+        <div class="page-head">
+            <div>
+                <h1 class="page-title">Smart devices controller</h1>
+                <p class="page-subtitle">Lights, heating and energy for the whole house.</p>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <div class="stack">
+                <!-- Common area lights -->
+                <section class="card" aria-labelledby="lights-title">
+                    <h2 class="card__title" id="lights-title">Common area lights</h2>
+                    <!-- Example devices: JS will fill this list -->
+                    <ul class="list" id="common-lights">
+                        <li class="list__item">
+                            <label for="light-kitchen">Kitchen</label>
+                            <span class="switch"><input type="checkbox" id="light-kitchen" role="switch" checked><span class="switch__track"></span></span>
+                        </li>
+                        <li class="list__item">
+                            <label for="light-living">Living room</label>
+                            <span class="switch"><input type="checkbox" id="light-living" role="switch"><span class="switch__track"></span></span>
+                        </li>
+                        <li class="list__item">
+                            <label for="light-hallway">Hallway</label>
+                            <span class="switch"><input type="checkbox" id="light-hallway" role="switch"><span class="switch__track"></span></span>
+                        </li>
+                        <li class="list__item">
+                            <label for="light-bathroom">Bathroom</label>
+                            <span class="switch"><input type="checkbox" id="light-bathroom" role="switch"><span class="switch__track"></span></span>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Temperature -->
+                <section class="card" aria-labelledby="temp-title">
+                    <h2 class="card__title" id="temp-title">Temperature</h2>
+                    <ul class="list" id="common-temperature">
+                        <li class="list__item">
+                            <label for="temp-kitchen">Kitchen</label>
+                            <span class="unit-input"><input type="number" id="temp-kitchen" class="input input--sm" min="10" max="30" step="0.5" value="20">°C</span>
+                        </li>
+                        <li class="list__item">
+                            <label for="temp-living">Living room</label>
+                            <span class="unit-input"><input type="number" id="temp-living" class="input input--sm" min="10" max="30" step="0.5" value="21">°C</span>
+                        </li>
+                        <li class="list__item">
+                            <label for="temp-bathroom">Bathroom</label>
+                            <span class="unit-input"><input type="number" id="temp-bathroom" class="input input--sm" min="10" max="30" step="0.5" value="22">°C</span>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Rooms (grouped per room) -->
+                <section class="card" aria-labelledby="rooms-title">
+                    <h2 class="card__title" id="rooms-title">Rooms</h2>
+                    <div id="rooms">
+                        <h3 class="list-group-title">Room 1</h3>
+                        <ul class="list">
+                            <li class="list__item">
+                                <label for="r1-light">Ceiling light</label>
+                                <span class="switch"><input type="checkbox" id="r1-light" role="switch"><span class="switch__track"></span></span>
+                            </li>
+                            <li class="list__item">
+                                <label for="r1-desk">Desk lamp</label>
+                                <span class="switch"><input type="checkbox" id="r1-desk" role="switch"><span class="switch__track"></span></span>
+                            </li>
+                        </ul>
+                        <h3 class="list-group-title">Room 2</h3>
+                        <ul class="list">
+                            <li class="list__item">
+                                <label for="r2-light">Ceiling light</label>
+                                <span class="switch"><input type="checkbox" id="r2-light" role="switch"><span class="switch__track"></span></span>
+                            </li>
+                            <li class="list__item">
+                                <label for="r2-desk">Desk lamp</label>
+                                <span class="switch"><input type="checkbox" id="r2-desk" role="switch"><span class="switch__track"></span></span>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Energy -->
+            <section class="card" aria-labelledby="energy-title">
+                <h2 class="card__title" id="energy-title">Energy</h2>
+                <p class="energy__summary">Used in this period <strong id="energy-total">12.4 kWh</strong></p>
+                <div class="segmented" role="group" aria-label="Time range">
+                    <button type="button" data-range="1D" aria-pressed="true">1D</button>
+                    <button type="button" data-range="1W" aria-pressed="false">1W</button>
+                    <button type="button" data-range="1M" aria-pressed="false">1M</button>
+                    <button type="button" data-range="1Y" aria-pressed="false">1Y</button>
+                    <button type="button" data-range="Max" aria-pressed="false">Max</button>
+                </div>
+                <!-- Placeholder chart: JS will draw the real data here -->
+                <div id="energy-chart">
+                    <svg class="chart" viewBox="0 0 600 240" role="img" aria-label="Energy use over the selected period">
+                        <line class="grid" x1="40" y1="20" x2="590" y2="20"/>
+                        <line class="grid" x1="40" y1="110" x2="590" y2="110"/>
+                        <line class="axis" x1="40" y1="200" x2="590" y2="200"/>
+                        <line class="axis" x1="40" y1="20" x2="40" y2="200"/>
+                        <text x="32" y="24" text-anchor="end">2</text>
+                        <text x="32" y="114" text-anchor="end">1</text>
+                        <text x="32" y="204" text-anchor="end">0</text>
+                        <path class="area" d="M40 196 L66 188 L112 168 L158 156 L180 146 L210 128 L240 96 L264 62 L290 128 L314 146 L350 156 L390 172 L420 190 L456 158 L490 120 L520 104 L550 98 L590 96 L590 200 L40 200 Z"/>
+                        <path class="line" d="M40 196 L66 188 L112 168 L158 156 L180 146 L210 128 L240 96 L264 62 L290 128 L314 146 L350 156 L390 172 L420 190 L456 158 L490 120 L520 104 L550 98 L590 96"/>
+                        <text x="40" y="222" text-anchor="middle">00:00</text>
+                        <text x="177" y="222" text-anchor="middle">06:00</text>
+                        <text x="315" y="222" text-anchor="middle">12:00</text>
+                        <text x="452" y="222" text-anchor="middle">18:00</text>
+                        <text x="585" y="222" text-anchor="end">24:00</text>
+                    </svg>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="include.js"></script>
+</body>
+</html>

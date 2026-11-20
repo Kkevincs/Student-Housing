@@ -1,27 +1,39 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Login | Web_name</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <body data-page="login">
-        <main class="">
-            <a class="brand" href="login.html"><span class="brand__logo" aria-hidden="true"></span>Web_name</a>
-            <section class="">
-                <nav class="tabs" aria-label="Account"><a href="login.html" aria-current="page">Login</a></nav>
-                <h1 class="title">Welcome back</h1>
-                <from class="" action="my_space.html">
-                    <div class="field"><label for="user">User</label><input id="user" name="user" type="text" class="input" placeholder="Username"></div>
-                    <div class="field"><label for="password">Password</label><input id="password" name="password" type="password" class="input" placeholder="Username"></div>
-                    <div class=""><button class="" type="submit">Enter</button></div>
-                </from>
-            </section>
-        </main>
-        
-    </body>
-    </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Web_name</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="login">
+    <main class="auth">
+        <a class="brand" href="login.html"><span class="brand__logo" aria-hidden="true"></span>Web_name</a>
+
+        <section class="card" aria-labelledby="login-title">
+            <h1 class="form-title" id="login-title">Login</h1>
+            <p class="form-intro">New here? Use the temporary password we sent to your email. You'll choose your own password right after.</p>
+
+            <!-- JS: show this when the user/password is wrong -->
+            <p class="form-error" id="login-error" role="alert" hidden>Wrong user or password.</p>
+
+            <form id="login-form" action="my_space.html" method="get">
+                <div class="form-row">
+                    <label for="user">User</label>
+                    <input id="user" name="user" type="text" class="input" autocomplete="username" required>
+                </div>
+                <div class="form-row">
+                    <label for="password">Password</label>
+                    <input id="password" name="password" type="password" class="input" autocomplete="current-password" required>
+                </div>
+                <div class="actions actions--end">
+                    <button class="btn btn--primary" type="submit">Enter</button>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
