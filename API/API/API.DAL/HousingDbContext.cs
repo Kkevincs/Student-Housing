@@ -1,4 +1,5 @@
-﻿using API.Repository.Models;
+﻿using API.API.DAL.Models;
+using API.Repository.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
@@ -17,5 +18,6 @@ namespace API.Repository
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Score> Scores {  get; set; }
         public DbSet<Student> Students { get; set; }
+        public DbSet<Employee> Employee { get; set; }
     }
 }

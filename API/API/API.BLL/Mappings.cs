@@ -1,4 +1,5 @@
 ﻿using API.API.BLL.DTOs;
+using API.API.DAL.Models;
 using API.Repository.Models;
 using AutoMapper;
 
@@ -44,6 +45,11 @@ namespace API.API.BLL
             CreateMap<Student, CreateStudentDto>();
             CreateMap<GetStudentDto, Student>();
             CreateMap<Student, GetStudentDto>();
+
+            CreateMap<CreateEmployeeDto, Employee>();
+            CreateMap<Employee, CreateEmployeeDto>();
+            CreateMap<GetEmployeeDto, Employee>();
+            CreateMap<Employee, GetEmployeeDto>();
 
 
         }
