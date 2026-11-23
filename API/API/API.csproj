@@ -24,4 +24,10 @@
     <Folder Include="wwwroot\css\" />
   </ItemGroup>
 
+  <!-- Copy the CSV files next to API.dll so the CSV import endpoints find them in Docker -->
+  <ItemGroup>
+    <None Update="*.csv" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <None Update="Student-Password.csv" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never" />
+  </ItemGroup>
+
 </Project>
