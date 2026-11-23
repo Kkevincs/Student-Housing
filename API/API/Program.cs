@@ -65,7 +65,16 @@ namespace API
             });
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 
-            builder.Services.AddOpenApi();
+            var baseUrl = Environment.GetEnvironmentVariable("API_BASE_URL");
+            builder.Services.AddOpenApi(options =>
+            {
+                // Swagger sends its requests to API_BASE_URL (from .env)
+                options.AddDocumentTransformer((document, context, cancellationToken) =>
+                {
+                    document.Servers = new List<OpenApiServer> { new OpenApiServer { Url = baseUrl } };
+                    return Task.CompletedTask;
+                });
+            });
             var ConnectionString = Environment.GetEnvironmentVariable("DB_CONNECTION");
             var jwtkey = Environment.GetEnvironmentVariable("JWT_KEY");
             builder.Services.AddAutoMapper(cfg => { }, typeof(Mappings));
@@ -99,11 +108,6 @@ namespace API
                 options.ForwardedHeaders =
                     ForwardedHeaders.XForwardedFor |
                     ForwardedHeaders.XForwardedProto;
-
-                // Trust the X-Forwarded-* headers from Traefik (it is not on localhost),
-                // so the app knows the request came in over https
-                options.KnownIPNetworks.Clear();
-                options.KnownProxies.Clear();
 
             });
             var app = builder.Build();

@@ -28,6 +28,7 @@ services:
       ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT:-Development}
       DB_CONNECTION: Server=db;Port=3306;Database=${MYSQL_DATABASE};User=root;Password=${MYSQL_ROOT_PASSWORD};
       JWT_KEY: ${JWT_KEY}
+      API_BASE_URL: ${API_BASE_URL}
     expose:
       - "8080"
     depends_on:
