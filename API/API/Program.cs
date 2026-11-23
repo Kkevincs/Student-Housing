@@ -100,6 +100,11 @@ namespace API
                     ForwardedHeaders.XForwardedFor |
                     ForwardedHeaders.XForwardedProto;
 
+                // Trust the X-Forwarded-* headers from Traefik (it is not on localhost),
+                // so the app knows the request came in over https
+                options.KnownIPNetworks.Clear();
+                options.KnownProxies.Clear();
+
             });
             var app = builder.Build();
             app.UseForwardedHeaders();
