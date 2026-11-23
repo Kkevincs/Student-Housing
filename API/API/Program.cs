@@ -107,7 +107,7 @@ namespace API
             app.UseStaticFiles();
 
             // `dotnet API.dll --migrate` applies pending EF Core migrations and exits
-            // (used by the "migrate" service in docker-compose.yml).
+            // (the Dockerfile runs this before starting the API).
             if (args.Contains("--migrate"))
             {
                 using var scope = app.Services.CreateScope();

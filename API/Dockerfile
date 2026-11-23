@@ -21,4 +21,5 @@ COPY --from=build /app/publish .
 # Run as the non-root user that ships with the .NET images
 USER $APP_UID
 
-ENTRYPOINT ["dotnet", "API.dll"]
+# Apply pending EF Core migrations first, then start the API
+ENTRYPOINT ["sh", "-c", "dotnet API.dll --migrate && exec dotnet API.dll"]
