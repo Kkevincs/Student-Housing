@@ -4,6 +4,7 @@ using API.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(HousingDbContext))]
-    partial class HousingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20261122224610_AddOwner")]
+    partial class AddOwner
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,6 +24,104 @@ namespace API.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
+
+            modelBuilder.Entity("API.API.DAL.Models.Bill", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ElectricityBill")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GasBill")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LocationId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Month")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LocationId");
+
+                    b.ToTable("Bills");
+                });
+
+            modelBuilder.Entity("API.API.DAL.Models.Employee", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("JobTitle")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Manager")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("MonthlySalary")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("SurName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Employee");
+                });
+
+            modelBuilder.Entity("API.API.DAL.Models.Owner", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Owners");
+                });
 
             modelBuilder.Entity("API.Repository.Models.Assignment", b =>
                 {
@@ -86,6 +187,12 @@ namespace API.Migrations
                     b.Property<int>("LocationId")
                         .HasColumnType("int");
 
+                    b.Property<int>("PricePerRoom")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoomsAvailable")
+                        .HasColumnType("int");
+
                     b.Property<int>("TotalSquareMeter")
                         .HasColumnType("int");
 
@@ -116,7 +223,7 @@ namespace API.Migrations
                     b.Property<int>("HouseNumber")
                         .HasColumnType("int");
 
-                    b.Property<int>("PostCode")
+                    b.Property<int?>("PostCode")
                         .HasColumnType("int");
 
                     b.Property<string>("Street")
@@ -141,9 +248,6 @@ namespace API.Migrations
 
                     b.Property<int>("HouseId")
                         .HasColumnType("int");
-
-                    b.Property<float>("Price")
-                        .HasColumnType("float");
 
                     b.Property<int>("Roomnumber")
                         .HasColumnType("int");
@@ -232,6 +336,17 @@ namespace API.Migrations
                     b.ToTable("Students");
                 });
 
+            modelBuilder.Entity("API.API.DAL.Models.Bill", b =>
+                {
+                    b.HasOne("API.Repository.Models.Location", "LocationNav")
+                        .WithMany("BillsNav")
+                        .HasForeignKey("LocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("LocationNav");
+                });
+
             modelBuilder.Entity("API.Repository.Models.Assignment", b =>
                 {
                     b.HasOne("API.Repository.Models.Chore", "ChoreNav")
@@ -253,13 +368,11 @@ namespace API.Migrations
 
             modelBuilder.Entity("API.Repository.Models.House", b =>
                 {
-                    b.HasOne("API.Repository.Models.Location", "LocationNav")
+                    b.HasOne("API.Repository.Models.Location", null)
                         .WithOne("HouseNav")
                         .HasForeignKey("API.Repository.Models.House", "LocationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("LocationNav");
                 });
 
             modelBuilder.Entity("API.Repository.Models.Room", b =>
@@ -302,6 +415,8 @@ namespace API.Migrations
 
             modelBuilder.Entity("API.Repository.Models.Location", b =>
                 {
+                    b.Navigation("BillsNav");
+
                     b.Navigation("HouseNav")
                         .IsRequired();
                 });

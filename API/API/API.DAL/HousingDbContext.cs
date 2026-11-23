@@ -19,5 +19,7 @@ namespace API.Repository
         public DbSet<Score> Scores {  get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Employee> Employee { get; set; }
+        public DbSet<Bill> Bills { get; set; }
+        public DbSet<Owner> Owners { get; set; }
     }
 }

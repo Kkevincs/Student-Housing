@@ -51,6 +51,13 @@ namespace API.API.BLL
             CreateMap<GetEmployeeDto, Employee>();
             CreateMap<Employee, GetEmployeeDto>();
 
+            CreateMap<GetBillDto, Bill>();
+            CreateMap<Bill, GetBillDto>();
+            CreateMap<CreateBillDto, Bill>();
+            CreateMap<Bill, CreateBillDto>();
+
+            CreateMap<RegisterOwnerDto, Owner>();
+
 
         }
 

@@ -1,4 +1,4 @@
-
+﻿
 using API.API.BLL;
 using API.API.BLL.Services;
 using API.API.DAL.Repositories;
@@ -40,7 +40,16 @@ namespace API
             builder.Services.AddScoped<StudentService>();
             builder.Services.AddScoped<StudentRepository>();
             builder.Services.AddScoped<AuthenticationService>();
-            builder.Services.AddScoped<Client>();
+            builder.Services.AddScoped<EmployeeRepository>();
+            builder.Services.AddScoped<EmployeeService>();
+            builder.Services.AddScoped<AddEmployeesFromCsv>();
+            builder.Services.AddScoped<AddPropertysFromCsv>();
+            builder.Services.AddScoped<AddBillsFromCsv>();
+            builder.Services.AddScoped<BillRepository>();
+            builder.Services.AddScoped<BillService>();
+            builder.Services.AddScoped<OwnerRepository>();
+            builder.Services.AddScoped<OwnerService>();
+            builder.Services.AddScoped<AddRoomsAndStudentsFromCsv>();
 
             builder.Services.AddCors(options =>
             {
@@ -56,21 +65,7 @@ namespace API
             });
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 
-            builder.Services.AddOpenApi(options =>
-            {
-                options.AddDocumentTransformer((document, context, cancellationToken) =>
-                {
-                    document.Servers = new List<OpenApiServer>
-        {
-            new OpenApiServer
-            {
-                Url = "https://api.satoriservices.nl"
-            }
-        };
-
-                    return Task.CompletedTask;
-                });
-            });
+            builder.Services.AddOpenApi();
             var ConnectionString = Environment.GetEnvironmentVariable("DB_CONNECTION");
             var jwtkey = Environment.GetEnvironmentVariable("JWT_KEY");
             builder.Services.AddAutoMapper(cfg => { }, typeof(Mappings));
