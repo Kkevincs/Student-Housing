@@ -16,8 +16,10 @@ WORKDIR /app
 ENV ASPNETCORE_URLS=http://+:8080
 EXPOSE 8080
 
-# Owned by the app user so the CSV import can write Student-Password.csv
-COPY --from=build --chown=$APP_UID /app/publish .
+COPY --from=build /app/publish .
+
+# The app user must own /app so the CSV import can create Student-Password.csv
+RUN chown -R $APP_UID /app
 
 # Run as the non-root user that ships with the .NET images
 USER $APP_UID
