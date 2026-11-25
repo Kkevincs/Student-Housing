@@ -21,6 +21,8 @@
             <a class="btn" href="chores.html">Back to calendar</a>
         </div>
 
+        <p class="banner" id="saved-message" hidden>Chore saved.</p>
+
         <div class="table-wrap">
             <table class="table table--clickable">
                 <thead>
@@ -31,37 +33,14 @@
                         <th scope="col">Created by</th>
                     </tr>
                 </thead>
-                <!-- Example rows: JS will fill this table (link to edit_chore.html?id=...) -->
-                <tbody id="modify-chore-table">
-                    <tr>
-                        <td><a class="row-link" href="edit_chore.html?id=1">Take out the trash</a></td>
-                        <td>Both bins, put new bags in.</td>
-                        <td>Every week</td>
-                        <td>Anna</td>
-                    </tr>
-                    <tr>
-                        <td><a class="row-link" href="edit_chore.html?id=2">Clean the kitchen</a></td>
-                        <td>Counters, stove and floor.</td>
-                        <td>Every week</td>
-                        <td>Marco</td>
-                    </tr>
-                    <tr>
-                        <td><a class="row-link" href="edit_chore.html?id=3">Clean the bathroom</a></td>
-                        <td>Sink, shower, toilet and floor.</td>
-                        <td>Every 2 weeks</td>
-                        <td>Lena</td>
-                    </tr>
-                    <tr>
-                        <td><a class="row-link" href="edit_chore.html?id=4">Vacuum the hallway</a></td>
-                        <td>Hallway and stairs.</td>
-                        <td>Every 2 weeks</td>
-                        <td>Tom</td>
-                    </tr>
-                </tbody>
+                <!-- Filled by modify_chores.js -->
+                <tbody id="modify-chore-table"></tbody>
             </table>
         </div>
     </main>
 
     <script src="include.js"></script>
+    <script src="js/Apis/Apis.js"></script>
+    <script src="js/modify_chores.js"></script>
 </body>
 </html>
