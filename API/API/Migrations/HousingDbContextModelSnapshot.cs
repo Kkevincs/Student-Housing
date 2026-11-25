@@ -154,6 +154,12 @@ namespace API.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("CreatorId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -169,6 +175,8 @@ namespace API.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CreatorId");
 
                     b.ToTable("Chores");
                 });
@@ -362,6 +370,15 @@ namespace API.Migrations
                     b.Navigation("StudentNav");
                 });
 
+            modelBuilder.Entity("API.Repository.Models.Chore", b =>
+                {
+                    b.HasOne("API.Repository.Models.Student", "CreatorNav")
+                        .WithMany("CreatedChores")
+                        .HasForeignKey("CreatorId");
+
+                    b.Navigation("CreatorNav");
+                });
+
             modelBuilder.Entity("API.Repository.Models.House", b =>
                 {
                     b.HasOne("API.Repository.Models.Location", null)
@@ -420,6 +437,8 @@ namespace API.Migrations
             modelBuilder.Entity("API.Repository.Models.Student", b =>
                 {
                     b.Navigation("Assignments");
+
+                    b.Navigation("CreatedChores");
 
                     b.Navigation("RoomNav")
                         .IsRequired();

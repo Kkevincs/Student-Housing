@@ -16,6 +16,12 @@ form.addEventListener("submit", async (event) => {
     }
     // console.log(chore);
 
-    await CreateChore(chore);
-    location.href = "chore_submitted.html";
+    const added = await CreateChore(chore);
+
+    if(added){
+        location.href = "chore_submitted.html";
+    }
+    else{
+        alert("Chore creation failed, try again.");
+    }    
 });

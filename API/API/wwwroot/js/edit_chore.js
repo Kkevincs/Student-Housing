@@ -43,4 +43,29 @@ form.addEventListener("submit", async (event) => {
     else{
         alert("Saving failed, try again.");
     }
+
+});
+
+//Delete
+const delete_button = document.getElementById("delete-chore");
+
+delete_button.addEventListener("click", async () => {
+
+    const name = document.getElementById("chore-name").value;
+
+    const confirmation = confirm(`Delete ${name}?`);
+
+    if(confirmation){
+        const deleted = await DeleteChore(id);
+
+        if(deleted){
+            location.href = `modify_chores.html?deleted=${encodeURIComponent(name)}`;
+        }
+        else{
+            alert("Delete attempt failed, try again.")
+        }
+    }
+    else{
+        alert("Delete attempt canceled.");
+    }
 });

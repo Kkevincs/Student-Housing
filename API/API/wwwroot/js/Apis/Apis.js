@@ -71,14 +71,15 @@ async function CreateChore(Chore) {
         },
         body: JSON.stringify(Chore)
     })
+    return response.ok;
 }
 
 async function DeleteChore(id) {
     const response = await fetch(`/Chore/${id}`, {
         method: "DELETE"
     })
-
-    console.log("Chore deleted successfully");
+    return response.ok;
+    //console.log("Chore deleted successfully");
 }
 
 async function UpdateChore(Chore) {

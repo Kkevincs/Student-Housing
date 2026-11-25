@@ -17,9 +17,16 @@ async function showChores() {
     const params = new URLSearchParams(location.search);
     const saved = params.get("saved");  
     const savedChore = chores.find(c => c.id === Number(saved));
-    if(saved){
+    if(saved && savedChore){
         const message = document.getElementById("saved-message");
         message.textContent = `"${savedChore.name}" was updated.`;
+        message.hidden = false;
+    }
+
+    const deleted = params.get("deleted");      
+    if(deleted){
+        const message = document.getElementById("deleted-message");
+        message.textContent = `"${deleted}" was deleted.`;
         message.hidden = false;
     }
 }
