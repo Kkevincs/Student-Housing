@@ -7,11 +7,20 @@ if(!id){
 
 async function loadChore() {
     const chore = await GetByIdChore(id);
+    const students = await GetAllStudent();
+
+    const student = students.find(n => n.id === chore.studentId);
+    const firstName = student !== undefined ? student.firstName : "Former housemate";
+
+    const wholeDate = new Date(chore.createdAt);
+    const day = wholeDate.toLocaleDateString();
 
     document.getElementById("chore-name").value = chore.name;
     document.getElementById("chore-frequency").value = chore.howOften;
     document.getElementById("chore-description").value = chore.description;
     document.getElementById("chore-points").value = chore.point;
+    document.getElementById("chore-created-by").value = firstName;
+    document.getElementById("chore-created-date").value = day;
 }
 
 loadChore();
@@ -25,6 +34,7 @@ form.addEventListener("submit", async (event) => {
     const description = document.getElementById("chore-description").value;
     const howOften = Number(document.getElementById("chore-frequency").value);
     const point = Number(document.getElementById("chore-points").value);
+
 
     const chore = {
         id: Number(id),

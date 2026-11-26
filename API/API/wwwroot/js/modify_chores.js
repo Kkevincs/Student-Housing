@@ -1,16 +1,22 @@
 async function showChores() {
     const chores = await GetAllChore();      
+    const students = await GetAllStudent();
+
     //console.log(chores);
     const table = document.getElementById("modify-chore-table");
     table.innerHTML = "";                       
 
-    for (const chore of chores) {                
+    for (const chore of chores) {     
+        
+        const student = students.find(n => n.id === chore.studentId);
+        const firstName = student !== undefined ? student.firstName : "Former housemate";
+
         table.innerHTML += `
             <tr data-id="${chore.id}">
                 <td><a class="row-link" href="edit_chore.html?id=${chore.id}">${chore.name}</a></td>
                 <td>${chore.description}</td>
                 <td>Every ${chore.howOften} days</td>
-                <td> - </td>
+                <td>${firstName}</td>
             </tr>`;
     }
 
