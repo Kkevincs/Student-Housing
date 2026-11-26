@@ -21,6 +21,7 @@ namespace API.API.BLL.Services
         public async Task Create(CreateChoreDto chore)
         {
             Chore createable = _mapper.Map<Chore>(chore);
+            createable.CreatedAt = DateTime.Now;
             await _repo.Create(createable);
 
         }

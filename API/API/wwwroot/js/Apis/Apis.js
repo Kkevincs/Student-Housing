@@ -1,14 +1,16 @@
 ﻿// Assignment
 async function GetAllAssignment() {
-        const response = await fetch("/Assignment");
-        const data = await response.json();
-        console.log(data);
+    const response = await fetch("/Assignment");
+    const data = await response.json();
+    //console.log(data);
+    return data;
 }
 
 async function GetByIdAssignment(id){
     const response = await fetch(`/Assignment/${id}`)
     const data = await response.json();
-    console.log(data)
+    //console.log(data);
+    return data;
 }
 
 async function Create(Assignment) {
@@ -18,8 +20,6 @@ async function Create(Assignment) {
             "Content-Type" : "application/json"
         },
         body: JSON.stringify(Assignment)
-
-
     })
 
     GetAll();
@@ -258,7 +258,8 @@ async function GetAllScore() {
 async function GetByIdScore(id) {
     const response = await fetch(`/Score/${id}`)
     const data = await response.json();
-    console.log(data)
+    // console.log(data);
+    return data;
 }
 
 async function CreateScore(Score) {
@@ -301,7 +302,8 @@ async function UpdateScore(Score) {
 async function GetAllStudent() {
     const response = await fetch("/Student");
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
+    return data;
 }
 
 async function GetByIdStudent(id) {

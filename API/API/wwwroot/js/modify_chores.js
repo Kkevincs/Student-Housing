@@ -6,13 +6,21 @@ async function showChores() {
 
     for (const chore of chores) {                
         table.innerHTML += `
-            <tr>
+            <tr data-id="${chore.id}">
                 <td><a class="row-link" href="edit_chore.html?id=${chore.id}">${chore.name}</a></td>
                 <td>${chore.description}</td>
                 <td>Every ${chore.howOften} days</td>
                 <td> - </td>
             </tr>`;
     }
+
+    table.addEventListener("click", (event) => {
+        const row = event.target.closest("tr");
+        if (!row) {
+            return;
+        }
+        location.href = `edit_chore.html?id=${row.dataset.id}`;
+    });
 
     const params = new URLSearchParams(location.search);
     const saved = params.get("saved");  

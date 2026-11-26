@@ -157,9 +157,6 @@ namespace API.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int?>("CreatorId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -174,9 +171,12 @@ namespace API.Migrations
                     b.Property<int>("Point")
                         .HasColumnType("int");
 
+                    b.Property<int?>("StudentId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("CreatorId");
+                    b.HasIndex("StudentId");
 
                     b.ToTable("Chores");
                 });
@@ -372,11 +372,12 @@ namespace API.Migrations
 
             modelBuilder.Entity("API.Repository.Models.Chore", b =>
                 {
-                    b.HasOne("API.Repository.Models.Student", "CreatorNav")
+                    b.HasOne("API.Repository.Models.Student", "StudentNav")
                         .WithMany("CreatedChores")
-                        .HasForeignKey("CreatorId");
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
-                    b.Navigation("CreatorNav");
+                    b.Navigation("StudentNav");
                 });
 
             modelBuilder.Entity("API.Repository.Models.House", b =>
