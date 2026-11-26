@@ -34,6 +34,7 @@ namespace API.Repository.Models
         public int StartYear { get; set; }
         public int EndYear { get; set; }
         public ICollection<Assignment> Assignments { get; set; }
+        public ICollection<Chore> CreatedChores { get; set; }
         public Room RoomNav { get; set; }
 
         public Score ScoreNav { get; set; }

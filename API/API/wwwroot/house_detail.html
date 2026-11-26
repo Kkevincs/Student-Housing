@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>House detail | Web_name Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-section="admin">
+    <div id="header" data-src="admin_header.html"></div>
+
+    <main class="page">
+        <p class="breadcrumb"><a href="admin.html">Houses</a> / <span id="breadcrumb-house">House 1</span></p>
+
+        <div class="page-head">
+            <div>
+                <h1 class="page-title" id="house-title">House 1</h1>
+                <p class="page-subtitle" id="house-address">Groningen</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">People</h2>
+        <div class="table-wrap">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Last name</th>
+                        <th scope="col">Age</th>
+                        <th scope="col">Monthly pay</th>
+                        <th scope="col">Room</th>
+                    </tr>
+                </thead>
+                <!-- Example rows: JS will fill this table -->
+                <tbody id="house-people-table">
+                    <tr><td>Anna</td><td>Rossi</td><td>21</td><td>€ 450</td><td>3</td></tr>
+                    <tr><td>Marco</td><td>Bianchi</td><td>23</td><td>€ 420</td><td>1</td></tr>
+                    <tr><td>Lena</td><td>Weber</td><td>20</td><td>€ 450</td><td>2</td></tr>
+                    <tr><td>Tom</td><td>de Vries</td><td>22</td><td>€ 480</td><td>4</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 class="section-title">Energy use</h2>
+        <section class="card" aria-label="Energy use">
+            <p class="energy__summary">Used in this period <strong id="energy-total">48.2 kWh</strong></p>
+            <div class="segmented" role="group" aria-label="Time range">
+                <button type="button" data-range="1D" aria-pressed="true">1D</button>
+                <button type="button" data-range="1W" aria-pressed="false">1W</button>
+                <button type="button" data-range="1M" aria-pressed="false">1M</button>
+                <button type="button" data-range="1Y" aria-pressed="false">1Y</button>
+                <button type="button" data-range="Max" aria-pressed="false">Max</button>
+            </div>
+            <!-- Placeholder chart: JS will draw the real data here -->
+            <div id="energy-chart">
+                <svg class="chart chart--wide" viewBox="0 0 1000 240" role="img" aria-label="Energy use over the selected period">
+                    <line class="grid" x1="40" y1="20" x2="990" y2="20"/>
+                    <line class="grid" x1="40" y1="110" x2="990" y2="110"/>
+                    <line class="axis" x1="40" y1="200" x2="990" y2="200"/>
+                    <line class="axis" x1="40" y1="20" x2="40" y2="200"/>
+                    <text x="32" y="24" text-anchor="end">8</text>
+                    <text x="32" y="114" text-anchor="end">4</text>
+                    <text x="32" y="204" text-anchor="end">0</text>
+                    <path class="area" d="M40 192 L90 184 L180 162 L240 152 L300 138 L350 120 L400 90 L440 54 L490 120 L540 138 L600 146 L650 154 L700 168 L740 180 L790 156 L840 126 L890 108 L940 102 L990 100 L990 200 L40 200 Z"/>
+                    <path class="line" d="M40 192 L90 184 L180 162 L240 152 L300 138 L350 120 L400 90 L440 54 L490 120 L540 138 L600 146 L650 154 L700 168 L740 180 L790 156 L840 126 L890 108 L940 102 L990 100"/>
+                    <text x="40" y="222" text-anchor="middle">00:00</text>
+                    <text x="277" y="222" text-anchor="middle">06:00</text>
+                    <text x="515" y="222" text-anchor="middle">12:00</text>
+                    <text x="752" y="222" text-anchor="middle">18:00</text>
+                    <text x="985" y="222" text-anchor="end">24:00</text>
+                </svg>
+            </div>
+        </section>
+    </main>
+
+    <script src="include.js"></script>
+</body>
+</html>
