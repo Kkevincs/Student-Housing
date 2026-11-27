@@ -1,14 +1,16 @@
-﻿async function GetAllAssignment() {
-        const response = await fetch("/Assignment");
-        const data = await response.json();
-        console.log(data);
+﻿// Assignment
+async function GetAllAssignment() {
+    const response = await fetch("/Assignment");
+    const data = await response.json();
+    //console.log(data);
+    return data;
 }
 
-async function GetByIdAssignment(id)
-{
+async function GetByIdAssignment(id){
     const response = await fetch(`/Assignment/${id}`)
     const data = await response.json();
-    console.log(data)
+    //console.log(data);
+    return data;
 }
 
 async function Create(Assignment) {
@@ -18,8 +20,6 @@ async function Create(Assignment) {
             "Content-Type" : "application/json"
         },
         body: JSON.stringify(Assignment)
-
-
     })
 
     GetAll();
@@ -30,11 +30,9 @@ async function DeleteAssignment(id) {
         method: "DELETE"
     })
 
-    console.log("Assignment deleted succesfully")
-    GetAll()
-    
+    console.log("Assignment deleted successfully")
+    GetAll() 
 }
-
 
 async function UpdateAssignment(Assignment) {
     const response = await fetch("/Assignment", {
@@ -46,27 +44,23 @@ async function UpdateAssignment(Assignment) {
 
     })
 
-    console.log("Update was succesful")
+    console.log("Update was successful")
     GetAll();
 }
 
-
-
-
-
-
-
-
+// Chore
 async function GetAllChore() {
     const response = await fetch("/Chore");
     const data = await response.json();
     console.log(data);
+    return data;
 }
 
 async function GetByIdChore(id) {
     const response = await fetch(`/Chore/${id}`)
     const data = await response.json();
-    console.log(data)
+    console.log(data);
+    return data;
 }
 
 async function CreateChore(Chore) {
@@ -76,26 +70,20 @@ async function CreateChore(Chore) {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(Chore)
-
-
     })
-
-    GetAll();
+    return response.ok;
 }
 
 async function DeleteChore(id) {
     const response = await fetch(`/Chore/${id}`, {
         method: "DELETE"
     })
-
-    console.log("Chore deleted succesfully")
-    GetAll()
-
+    return response.ok;
+    //console.log("Chore deleted successfully");
 }
 
-
 async function UpdateChore(Chore) {
-    const response = await fetch("/Chore", {
+    const response = await fetch(`/Chore/${Chore.id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
@@ -103,20 +91,11 @@ async function UpdateChore(Chore) {
         body: JSON.stringify(Chore)
 
     })
-
-    console.log("Update was succesful")
-    GetAll();
+    return response.ok;
+    //console.log("Update was successful");
 }
 
-
-
-
-
-
-
-
-
-
+//House
 async function GetAllHouse() {
     const response = await fetch("/House");
     const data = await response.json();
@@ -148,11 +127,10 @@ async function DeleteHouse(id) {
         method: "DELETE"
     })
 
-    console.log("House deleted succesfully")
+    console.log("House deleted successfully")
     GetAll()
 
 }
-
 
 async function UpdateHouse(House) {
     const response = await fetch("/House", {
@@ -160,230 +138,214 @@ async function UpdateHouse(House) {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(HOuse)
+        body: JSON.stringify(House)
 
     })
 
-    console.log("Update was succesful")
+    console.log("Update was successful")
     GetAll();
 
-
-
-
-
-    async function GetAllLocation() {
-        const response = await fetch("/Location");
-        const data = await response.json();
-        console.log(data);
-    }
-
-    async function GetByIdLocation(id) {
-        const response = await fetch(`/Location/${id}`)
-        const data = await response.json();
-        console.log(data)
-    }
-
-    async function CreateLocation(Location) {
-        const response = await fetch("/Location", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(Location)
-
-
-        })
-
-        GetAll();
-    }
-
-    async function DeleteLocation(id) {
-        const response = await fetch(`/Location/${id}`, {
-            method: "DELETE"
-        })
-
-        console.log("Location deleted succesfully")
-        GetAll()
-
-    }
-
-
-    async function UpdateLocation(Location) {
-        const response = await fetch("/Location", {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(Location)
-
-        })
-
-        console.log("Update was succesful")
-        GetAll();
-
-
-
-
-
-
-        async function GetAllRoom() {
-            const response = await fetch("/Room");
-            const data = await response.json();
-            console.log(data);
-        }
-
-        async function GetByIdRoom(id) {
-            const response = await fetch(`/Room/${id}`)
-            const data = await response.json();
-            console.log(data)
-        }
-
-        async function CreateRoom(Room) {
-            const response = await fetch("/Room", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(Room)
-
-
-            })
-
-            GetAll();
-        }
-
-        async function DeleteRoom(id) {
-            const response = await fetch(`/Room/${id}`, {
-                method: "DELETE"
-            })
-
-            console.log("Room deleted succesfully")
-            GetAll()
-
-        }
-
-
-        async function UpdateRoom(Room) {
-            const response = await fetch("/Room", {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(Room)
-
-            })
-
-            console.log("Update was succesful")
-            GetAll();
-
-
-
-
-
-
-
-            async function GetAllScore() {
-                const response = await fetch("/Score");
-                const data = await response.json();
-                console.log(data);
-            }
-
-            async function GetByIdScore(id) {
-                const response = await fetch(`/Score/${id}`)
-                const data = await response.json();
-                console.log(data)
-            }
-
-            async function CreateScore(Score) {
-                const response = await fetch("/Score", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(Score)
-
-
-                })
-
-                GetAll();
-            }
-
-            async function DeleteScore(id) {
-                const response = await fetch(`/Score/${id}`, {
-                    method: "DELETE"
-                })
-
-                console.log("Score deleted succesfully")
-                GetAll()
-
-            }
-
-
-            async function UpdateScore(Score) {
-                const response = await fetch("/Score", {
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(Score)
-
-                })
-
-                console.log("Update was succesful")
-                GetAll();
-
-
-
-
-
-
-
-                async function GetAllStudent() {
-                    const response = await fetch("/Student");
-                    const data = await response.json();
-                    console.log(data);
-                }
-
-                async function GetByIdStudent(id) {
-                    const response = await fetch(`/Student/${id}`)
-                    const data = await response.json();
-                    console.log(data)
-                }
-
-                async function CreateStudent(Student) {
-                    const response = await fetch("/Student", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify(Student)
-
-
-                    })
-
-                    GetAll();
-                }
-
-                async function DeleteStudent(id) {
-                    const response = await fetch(`/Student/${id}`, {
-                        method: "DELETE"
-                    })
-
-                    console.log("Student deleted succesfully")
-                    GetAll()
-
-                }
-
-
-                async function UpdateStudent(Student) {
-                    const response = await fetch("/Student", {
-                        method: "PUT",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify(Student)
-
-                    })
-
-                    console.log("Update was succesful")
-                    GetAll();
+}
+
+// Location
+async function GetAllLocation() {
+    const response = await fetch("/Location");
+    const data = await response.json();
+    console.log(data);
+}
+
+async function GetByIdLocation(id) {
+    const response = await fetch(`/Location/${id}`)
+    const data = await response.json();
+    console.log(data)
+}
+
+async function CreateLocation(Location) {
+    const response = await fetch("/Location", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(Location)
+
+    })
+
+    GetAll();
+}
+
+async function DeleteLocation(id) {
+    const response = await fetch(`/Location/${id}`, {
+        method: "DELETE"
+    })
+
+    console.log("Location deleted successfully")
+    GetAll()
+
+}
+
+async function UpdateLocation(Location) {
+    const response = await fetch("/Location", {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(Location)
+
+    })
+
+    console.log("Update was successful")
+    GetAll();
+}
+
+// Room
+async function GetAllRoom() {
+    const response = await fetch("/Room");
+    const data = await response.json();
+    console.log(data);
+}
+
+async function GetByIdRoom(id) {
+    const response = await fetch(`/Room/${id}`)
+    const data = await response.json();
+    console.log(data)
+}
+
+async function CreateRoom(Room) {
+    const response = await fetch("/Room", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(Room)
+
+
+    })
+
+    GetAll();
+}
+
+async function DeleteRoom(id) {
+    const response = await fetch(`/Room/${id}`, {
+        method: "DELETE"
+    })
+
+    console.log("Room deleted successfully")
+    GetAll()
+
+}
+
+async function UpdateRoom(Room) {
+    const response = await fetch("/Room", {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(Room)
+
+    })
+
+    console.log("Update was successful")
+    GetAll();
+}
+
+// Score
+async function GetAllScore() {
+    const response = await fetch("/Score");
+    const data = await response.json();
+    console.log(data);
+}
+
+async function GetByIdScore(id) {
+    const response = await fetch(`/Score/${id}`)
+    const data = await response.json();
+    // console.log(data);
+    return data;
+}
+
+async function CreateScore(Score) {
+    const response = await fetch("/Score", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(Score)
+    })
+
+    GetAll();
+}
+
+async function DeleteScore(id) {
+    const response = await fetch(`/Score/${id}`, {
+        method: "DELETE"
+    })
+
+    console.log("Score deleted successfully")
+    GetAll()
+
+}
+
+async function UpdateScore(Score) {
+    const response = await fetch("/Score", {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(Score)
+
+    })
+
+    console.log("Update was successful")
+    GetAll();
+}
+
+// Student
+async function GetAllStudent() {
+    const response = await fetch("/Student");
+    const data = await response.json();
+    // console.log(data);
+    return data;
+}
+
+async function GetByIdStudent(id) {
+    const response = await fetch(`/Student/${id}`)
+    const data = await response.json();
+    console.log(data)
+}
+
+async function CreateStudent(Student) {
+    const response = await fetch("/Student", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(Student)
+
+
+    })
+
+    GetAll();
+}
+
+async function DeleteStudent(id) {
+    const response = await fetch(`/Student/${id}`, {
+        method: "DELETE"
+    })
+
+    console.log("Student deleted successfully")
+    GetAll()
+
+}
+
+async function UpdateStudent(Student) {
+    const response = await fetch("/Student", {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(Student)
+
+    })
+
+    console.log("Update was successful")
+    GetAll();
+}

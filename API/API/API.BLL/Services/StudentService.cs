@@ -23,6 +23,11 @@ namespace API.API.BLL.Services
             await _repo.Create(createable);
         }
 
+        public async Task CreateWithId(Student student)
+        {
+            await _repo.Create(student);
+        }
+
         public async Task Delete(int id)
         {
             await _repo.Delete(id);

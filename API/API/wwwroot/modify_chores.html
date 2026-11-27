@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Modify chores | Web_name</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-section="chores">
+    <div id="header"></div>
+
+    <main class="page">
+        <div class="page-head">
+            <div>
+                <h1 class="page-title">Modify chores</h1>
+                <p class="page-subtitle">Pick a chore to edit or delete it.</p>
+            </div>
+            <a class="btn" href="chores.html">Back to calendar</a>
+        </div>
+
+        <p class="banner" id="saved-message" hidden>Chore saved.</p>
+        <p class="banner" id="deleted-message" hidden>Chore deleted.</p>
+
+        <div class="table-wrap">
+            <table class="table table--clickable">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">How often</th>
+                        <th scope="col">Created by</th>
+                    </tr>
+                </thead>
+                <!-- Filled by modify_chores.js -->
+                <tbody id="modify-chore-table"></tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="include.js"></script>
+    <script src="js/Apis/Apis.js"></script>
+    <script src="js/modify_chores.js"></script>
+</body>
+</html>

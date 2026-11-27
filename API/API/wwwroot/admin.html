@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Houses | Web_name Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-section="admin">
+    <div id="header" data-src="admin_header.html"></div>
+
+    <main class="page">
+        <div class="page-head">
+            <div>
+                <h1 class="page-title">Houses</h1>
+                <p class="page-subtitle">All the houses you manage.</p>
+            </div>
+        </div>
+
+        <div class="table-wrap">
+            <table class="table table--clickable">
+                <thead>
+                    <tr>
+                        <th scope="col">House</th>
+                        <th scope="col">City</th>
+                        <th scope="col"># Tenants</th>
+                        <th scope="col">Rooms available</th>
+                    </tr>
+                </thead>
+                <!-- Example rows: JS will fill this table (link to house_detail.html?id=...) -->
+                <tbody id="houses-table">
+                    <tr><td><a class="row-link" href="house_detail.html?id=1">House 1</a></td><td>Groningen</td><td>4</td><td>1</td></tr>
+                    <tr><td><a class="row-link" href="house_detail.html?id=2">House 2</a></td><td>Groningen</td><td>6</td><td>0</td></tr>
+                    <tr><td><a class="row-link" href="house_detail.html?id=3">House 3</a></td><td>Assen</td><td>3</td><td>2</td></tr>
+                    <tr><td><a class="row-link" href="house_detail.html?id=4">House 4</a></td><td>Leeuwarden</td><td>5</td><td>1</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="include.js"></script>
+</body>
+</html>

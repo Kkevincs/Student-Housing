@@ -24,6 +24,12 @@ namespace API.API.BLL.Services
             await _repo.Create(createable);
         }
 
+        public async Task CreateWithId(Employee emp)
+        {
+            await _repo.Create(emp);
+        }
+
+
         public async Task Delete(int id)
         {
             await _repo.Delete(id);

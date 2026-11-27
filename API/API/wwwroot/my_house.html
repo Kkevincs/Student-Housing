@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My house | Web_name</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-section="my_house">
+    <div id="header"></div>
+
+    <main class="page">
+        <div class="page-head">
+            <div>
+                <h1 class="page-title">My house</h1>
+                <p class="page-subtitle" id="house-address">The people you live with.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">People</h2>
+        <div class="table-wrap">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Last name</th>
+                        <th scope="col">Age</th>
+                        <th scope="col">Streak</th>
+                        <th scope="col">Points</th>
+                        <th scope="col">To-do</th>
+                        <th scope="col">Room #</th>
+                    </tr>
+                </thead>
+                <!-- Example rows: JS will fill this table -->
+                <tbody id="people-table">
+                    <tr><td>Anna</td><td>Rossi</td><td>21</td><td>4 weeks</td><td>120</td><td>1</td><td>3</td></tr>
+                    <tr><td>Marco</td><td>Bianchi</td><td>23</td><td>2 weeks</td><td>95</td><td>2</td><td>1</td></tr>
+                    <tr><td>Lena</td><td>Weber</td><td>20</td><td>6 weeks</td><td>150</td><td>0</td><td>2</td></tr>
+                    <tr><td>Tom</td><td>de Vries</td><td>22</td><td>1 week</td><td>60</td><td>2</td><td>4</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="include.js"></script>
+</body>
+</html>

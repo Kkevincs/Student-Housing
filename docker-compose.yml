@@ -17,32 +17,23 @@ services:
       retries: 20
       start_period: 20s
 
-  # One-shot container: applies EF Core migrations, then exits
-  migrate:
+  # ASP.NET Core API (the image applies EF Core migrations on start, then runs the API)
+  api:
     build:
       context: ./API
       dockerfile: Dockerfile
-    image: student-housing-api
-    command: ["--migrate"]
-    environment:
-      DB_CONNECTION: Server=db;Port=3306;Database=${MYSQL_DATABASE};User=root;Password=${MYSQL_ROOT_PASSWORD};
-    depends_on:
-      db:
-        condition: service_healthy
-    restart: "no"
-
-  # ASP.NET Core API
-  api:
     image: student-housing-api
     restart: unless-stopped
     environment:
       ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT:-Development}
       DB_CONNECTION: Server=db;Port=3306;Database=${MYSQL_DATABASE};User=root;Password=${MYSQL_ROOT_PASSWORD};
+      JWT_KEY: ${JWT_KEY}
+      API_BASE_URL: ${API_BASE_URL}
     expose:
       - "8080"
     depends_on:
-      migrate:
-        condition: service_completed_successfully
+      db:
+        condition: service_healthy
 
   # Web UI for the database (like phpMyAdmin locally)
   phpmyadmin:

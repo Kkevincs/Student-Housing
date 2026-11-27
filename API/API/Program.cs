@@ -1,4 +1,4 @@
-
+﻿
 using API.API.BLL;
 using API.API.BLL.Services;
 using API.API.DAL.Repositories;
@@ -40,7 +40,16 @@ namespace API
             builder.Services.AddScoped<StudentService>();
             builder.Services.AddScoped<StudentRepository>();
             builder.Services.AddScoped<AuthenticationService>();
-            builder.Services.AddScoped<Client>();
+            builder.Services.AddScoped<EmployeeRepository>();
+            builder.Services.AddScoped<EmployeeService>();
+            builder.Services.AddScoped<AddEmployeesFromCsv>();
+            builder.Services.AddScoped<AddPropertysFromCsv>();
+            builder.Services.AddScoped<AddBillsFromCsv>();
+            builder.Services.AddScoped<BillRepository>();
+            builder.Services.AddScoped<BillService>();
+            builder.Services.AddScoped<OwnerRepository>();
+            builder.Services.AddScoped<OwnerService>();
+            builder.Services.AddScoped<AddRoomsAndStudentsFromCsv>();
 
             builder.Services.AddCors(options =>
             {
@@ -56,18 +65,13 @@ namespace API
             });
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 
+            var baseUrl = Environment.GetEnvironmentVariable("API_BASE_URL");
             builder.Services.AddOpenApi(options =>
             {
+                // Swagger sends its requests to API_BASE_URL (from .env)
                 options.AddDocumentTransformer((document, context, cancellationToken) =>
                 {
-                    document.Servers = new List<OpenApiServer>
-        {
-            new OpenApiServer
-            {
-                Url = "https://api.satoriservices.nl"
-            }
-        };
-
+                    document.Servers = new List<OpenApiServer> { new OpenApiServer { Url = baseUrl } };
                     return Task.CompletedTask;
                 });
             });
@@ -112,7 +116,7 @@ namespace API
             app.UseStaticFiles();
 
             // `dotnet API.dll --migrate` applies pending EF Core migrations and exits
-            // (used by the "migrate" service in docker-compose.yml).
+            // (the Dockerfile runs this before starting the API).
             if (args.Contains("--migrate"))
             {
                 using var scope = app.Services.CreateScope();

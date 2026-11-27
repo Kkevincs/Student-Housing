@@ -19,5 +19,18 @@ namespace API.Repository
         public DbSet<Score> Scores {  get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Employee> Employee { get; set; }
+        public DbSet<Bill> Bills { get; set; }
+        public DbSet<Owner> Owners { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Chore>()                  // for the Chore class…
+                .HasOne(c => c.StudentNav)                // …each chore has one student (a creator)…
+                .WithMany(s => s.CreatedChores)           // …and a student has many created chores…
+                .HasForeignKey(c => c.StudentId)          // …linked through the StudentId column…
+                .OnDelete(DeleteBehavior.SetNull);        // …when that student is deleted, set StudentId to NULL
+        }
     }
 }

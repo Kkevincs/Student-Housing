@@ -48,10 +48,6 @@ namespace API.API.PL.Controllers
             return Ok();
         }
 
-        [HttpPost]
-        public async Task<GetStudentDto> Register(CreateStudentDto student)
-        { 
-            
-        }
+       
     }
 }
